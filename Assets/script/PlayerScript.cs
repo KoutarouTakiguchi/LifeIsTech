@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class player : MonoBehaviour {
+public class PlayerScript : MonoBehaviour {
 	public float enegy = 0.0f;
 	public Rigidbody rb;
 	public GameObject rect;
@@ -20,7 +20,7 @@ public class player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		rb.AddForce (10, 0, 10, ForceMode.VelocityChange);
+		rb.AddForce (10, 10, 0, ForceMode.VelocityChange);
 
 		slider.maxValue = enegy;
 		slider.value = enegy;
@@ -33,19 +33,20 @@ public class player : MonoBehaviour {
 		//transform.LookAt (rotee);
 		transform.eulerAngles = rb.velocity;
 
-//エネルギーゲージ
-//		slider = GameObject.Find ("Slider").GetComponent<Slider> ();
-		
+		slider.value = enegy;
+
 	}
 	void OnCollisionEnter(Collision other){
 		if (other.gameObject.name == "enemy") {
 			enegy--;
-			slider.value = enegy;
 		}else if(other.gameObject.tag == "wall") {
 			//rotee = pl.transform.position;
 
 
 		}
+	}
+	public void UseEnegy(float i){
+		enegy = i;
 	}
 //	void rote(){
 //		rotee = transform.position;
