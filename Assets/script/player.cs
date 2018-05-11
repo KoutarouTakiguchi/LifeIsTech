@@ -28,9 +28,11 @@ public class player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 targetDir = rotee - transform.position;
-	    angle = Vector3.Angle (targetDir, transform.forward);
-		transform.LookAt (rotee);
+		//Vector3 targetDir = rotee - transform.position;
+	    //angle = Vector3.Angle (targetDir, transform.forward);
+		//transform.LookAt (rotee);
+		transform.eulerAngles = rb.velocity;
+
 //エネルギーゲージ
 //		slider = GameObject.Find ("Slider").GetComponent<Slider> ();
 		
@@ -40,7 +42,7 @@ public class player : MonoBehaviour {
 			enegy--;
 			slider.value = enegy;
 		}else if(other.gameObject.tag == "wall") {
-			rotee = pl.transform.position;
+			//rotee = pl.transform.position;
 
 
 		}
